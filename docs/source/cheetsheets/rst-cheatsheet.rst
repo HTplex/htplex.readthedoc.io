@@ -142,10 +142,6 @@ Lists
 |    /V            DOS/VMS-style options too               |    /V            DOS/VMS-style options too           |
 +----------------------------------------------------------+------------------------------------------------------+
 
-.. raw:: pdf
-
-   Spacer 0 72
-
 Section Structure
 -----------------
 
@@ -256,9 +252,6 @@ Blocks
 |                                                               |   transitions be immediately adjacent.               |
 +---------------------------------------------------------------+------------------------------------------------------+
 
-.. raw:: pdf
-
-   PageBreak
 
 Tables
 ------
@@ -447,7 +440,6 @@ They all begin with two periods and whitespace, the "explicit markup start".
 Credits
 -------
 
-.. class:: tablacreditos
 
 +---------------------------------------+-------------------------------------------------------+
 | CP Font from LiquiType:               | http://www.liquitype.com/workshop/type_design/cp-mono |
@@ -459,25 +451,3 @@ Credits
 | Typeset using rst2pdf                 | http://rst2pdf.googlecode.com                         |
 +---------------------------------------+-------------------------------------------------------+
 
-
-.. footer::
-
-    .. class:: tablapie
-
-    +-------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------+----------------------------------+-----------------------------------+
-    | |copy| :small:`2009 Roberto Alsina <ralsina@netmanagers.com.ar>  /  Creative Commons Attribution-Noncommercial-Share Alike 2.5 Argentina License`     | |attrib| :small:`Based on quickref.txt from docutils`               | |noncomm| :small:`Non-Commercial`| |sharealike| :small:`Share Alike` |
-    +-------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------+----------------------------------+-----------------------------------+
-
-.. |attrib| image:: attrib.png
-   :width: 8pt
-   :align: middle
-
-.. |noncomm| image:: noncomm.png
-   :width: 8pt
-   :align: middle
-
-.. |sharealike| image:: sharealike.png
-   :width: 8pt
-   :align: middle
-
-.. |copy|   unicode:: U+000A9

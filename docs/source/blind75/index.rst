@@ -7,6 +7,6 @@ this is blind 75 leetcode problems
    :glob:
    :maxdepth: 2
 
-    blind75/*
+    *
 
 
