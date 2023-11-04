@@ -20,7 +20,7 @@
    :caption: 🚀 example
 
    /usage
-   
+
 
 Haotian Zhang
 ===================================
