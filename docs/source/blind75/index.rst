@@ -8,7 +8,6 @@ this is blind 75 leetcode problems
    :includehidden:
    :caption: 📚 List of questions
 
-    /blind75/01_two_sum.rst
-    /blind75/02_three_sum.rst
-
+    /01_two_sum.rst
+    /02_three_sum.rst
 
