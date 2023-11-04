@@ -15,8 +15,23 @@ how to :ref:`installation` the project.
 
 Contents
 --------
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+   :caption: 🚀 Tutorials
+
+   /leet
+   /cheetsheets
+   /cook
+   /cheetsheets/rst-cheatsheet
 
 .. toctree::
+   :maxdepth: 4
+   :hidden:
+   :caption: 🚀 Tutorialssss
 
-   usage
-   api
+   /leet
+   /cheetsheets
+   /cook
+   /cheetsheets/rst-cheatsheet
+
