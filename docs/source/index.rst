@@ -26,11 +26,10 @@ Contents
 
 .. toctree::
    :maxdepth: 1
-   :hidden:
    :glob:
    :caption: 🚀 blind75
 
-   /blind75/*
+   /blind75/index.rst
 
 .. toctree::
    :maxdepth: 1
