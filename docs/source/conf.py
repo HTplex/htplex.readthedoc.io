@@ -2,7 +2,7 @@
 
 # -- Project information
 
-project = 'Haotian ZHang'
+project = 'Haotian Zhang'
 copyright = '2023, Haotian Zhang'
 author = 'Haotian Zhang'
 
