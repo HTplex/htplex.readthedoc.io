@@ -12,7 +12,7 @@
    :hidden:
    :caption: 🚀 blind75
 
-   /blind75/index.rst
+   /blind75/*
 
 .. toctree::
    :maxdepth: 1
