@@ -23,7 +23,6 @@ Contents
 
    /cheetsheets/*
 
-
 .. toctree::
    :maxdepth: 1
    :glob:
