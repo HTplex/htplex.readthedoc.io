@@ -9,6 +9,7 @@
 .. toctree::
    :maxdepth: 1
    :glob:
+   :hidden:
    :caption: 🚀 blind75
 
    /blind75/index.rst
@@ -19,6 +20,7 @@
    :caption: 🚀 example
 
    /usage
+   
 
 Haotian Zhang
 ===================================
