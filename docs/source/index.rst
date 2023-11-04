@@ -18,6 +18,7 @@ Contents
 .. toctree::
    :maxdepth: 1
    :hidden:
+   :glob:
    :caption: 🚀 cheetsheets
 
    /cheetsheets/*
@@ -26,9 +27,10 @@ Contents
 .. toctree::
    :maxdepth: 1
    :hidden:
-   :caption: 🚀 leet
+   :glob:
+   :caption: 🚀 blind75
 
-   /leet/*
+   /blind75/*
 
 .. toctree::
    :maxdepth: 1
