@@ -10,7 +10,7 @@ List of questions
    :caption: 📚 List of questions
 
 
-    blind75/01_two_sum
-    blind75/02_thress_sum
+    /blind75/01_two_sum
+    /blind75/02_thress_sum
 
 
