@@ -1,8 +1,6 @@
 rst-cheatsheet
 ===============
 
-.. role:: small
-
 Inline Markup
 -------------
 
