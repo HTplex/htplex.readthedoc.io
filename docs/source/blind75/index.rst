@@ -7,8 +7,9 @@ List of questions
 --------
 .. toctree::
    :glob:
-   :maxdepth: 2
+   :maxdepth: 1
 
-    blind75/*
+    blind75/01_two_sum
+    blind75/02_thress_sum
 
 
