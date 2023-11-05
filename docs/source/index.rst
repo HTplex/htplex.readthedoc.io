@@ -34,8 +34,8 @@ You found my blog! Welcome!
 
 I'm HT, a deep learning & AI engineer/researcher/programmer/scientist or whatever you call it.
 My research currently focuses on ``LLM`` based ``vision-language information retrival`` and ``generative AI`` tasks such as
-super human-level ``handwriting recognition``, ``document/image/video Q&A``,
-domain-expert ``conversational AI``, etc. Check here (later) 
+``super human-level handwriting recognition``, ``document/video info extraction``,
+``domain-expert chatbots``, etc. Check here (later) 
 for more details about my technical background and projects.
 
 I'm also passionate about `Photography <https://gallery.htplex.io>`_ and :doc:`Cooking </food/index>`.
