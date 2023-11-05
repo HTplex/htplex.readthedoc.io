@@ -1,50 +1,50 @@
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :hidden:
    :glob:
-   :caption: 🚀 cheetsheets
+   :caption: 📚 tinyWiki
 
-   /cheetsheets/*
+   /tinyWiki/*
+
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+   :glob:
+   :caption: 🥩 recipies
+
+   /food/*
+
 
 .. toctree::
    :maxdepth: 1
    :glob:
    :hidden:
-   :caption: 🚀 blind75
+   :caption: 📷 photography
 
-   /blind75/*
+   Gallery <https://gallery.htplex.io>
 
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-   :caption: 🚀 example
 
-   /usage
 
 
 Haotian Zhang
 ===================================
 
+Senior Machine Learning Engineer/Researcher/Data Scientist or whatever you call it.
+Focusing on LLM based high accracy Handwriting Recognition, Document and Form QA,
+information extraction/retrivals, and other Vision-Language related tasks. 
+
+I'm also passionate about `Photography <https://gallery.htplex.io>`_ and :doc:`Cooking </food/index.rst>` .
+
+:doc:`Here </tinyWiki/index.rst>`, you will mostly find the notes I accumulated during my work and study, span 
+a wide range of topics, in the form of short and concise blog posts,
+I hope they can be helpful to you.
+
+
 .. note::
 
-   This page is under active development. lots of nonsense placeholder are in place.
+   This blog is under active development. Be ware of lots of nonsense placeholders.
 
-
-Placeholder to test the theme
-
-**Lumache** (/lu'make/) is a Python library for cooks and food lovers
-that creates recipes mixing random ingredients.
-It pulls data from the `Open Food Facts database <https://world.openfoodfacts.org/>`_
-and offers a *simple* and *intuitive* API.
-
-Check out the :doc:`usage` section for further information, including
-how to :ref:`installation` the project.
-
-insert self intro
-
-redirect to corresponding page based on why are you here
-
-some notes
 
 
 
