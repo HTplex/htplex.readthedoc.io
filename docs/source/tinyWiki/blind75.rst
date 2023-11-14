@@ -1,7 +1,7 @@
 Blind 75
 =================
 
-Let's do all blind 75 problems
+Let's do all leetcode blind 75 problems
 
 
 Indexs

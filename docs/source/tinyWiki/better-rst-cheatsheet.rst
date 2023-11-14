@@ -1,10 +1,10 @@
-rst cheat sheet
+Better reStructuredText Cheatsheet
 =================
 this is a chest sheet for rst, main refereces: chatgpt and https://sphinx-tutorial.readthedocs.io/cheatsheet/
 
+.. note:: 
+    Example on how leveled titles work
 
-Example on how leveled titles work
-==================================
 
 This is a Subsection
 ---------------------
@@ -19,9 +19,9 @@ This is a Subsection 2
 ---------------------------
 lhabalabalba
 
+.. note:: 
+    Example on how section refereces work
 
-Example on how section refereces work
-=====================================
 
 Subsection A
 ------------
@@ -41,9 +41,9 @@ Referencing Subsections
 As discussed in `Subsection B`_, there are important points to consider.
 
 
-
+.. note:: 
 Styles Example
-====================
+    
 
 .. _installation:
 
