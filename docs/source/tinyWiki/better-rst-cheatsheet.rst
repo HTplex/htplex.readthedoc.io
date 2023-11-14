@@ -1,6 +1,8 @@
 Better reStructuredText Cheatsheet
 =================
-this is a chest sheet for rst, main refereces: chatgpt and https://sphinx-tutorial.readthedocs.io/cheatsheet/
+This is a chest sheet for rst, main refereces: chatgpt and https://sphinx-tutorial.readthedocs.io/cheatsheet/
+
+Please referece the source code for the rst file to see how each section is made.
 
 .. note:: 
     Example on how leveled titles work
@@ -12,12 +14,12 @@ This is a subSubsection
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 This is a subsubsubsection
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-you can use any underlines for anything, it automatically becomes a 
-levels based on occurance. my preferece levels are =, -, ^, ~, and +
+You can use any underlines for anything, it automatically becomes a 
+levels based on which one used first. my preferece levels are =, -, ^, ~, and +
 
 This is a Subsection 2
 ---------------------------
-lhabalabalba
+Jibber jibber jabber jabber.
 
 .. note:: 
     Example on how section refereces work
@@ -42,8 +44,8 @@ As discussed in `Subsection B`_, there are important points to consider.
 
 
 .. note:: 
-Styles Example
-    
+    Styles Example
+
 
 .. _installation:
 
