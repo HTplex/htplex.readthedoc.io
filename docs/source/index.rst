@@ -42,7 +42,7 @@ I'm also passionate about `Photography <https://gallery.htplex.io>`_ and :doc:`C
 
 :doc:`Here </tinyWiki/index>`, you will mostly find the notes I accumulated during my work and study, 
 spanning a wide range of topics, in the form of short and concise blog posts,
-I hope they can be helpful to you.
+I hope they can be helpful to you too.
 
 
 .. note::
