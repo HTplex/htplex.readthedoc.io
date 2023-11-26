@@ -51,8 +51,10 @@ Q49. Group Anagrams
 
 .. code-block:: text
 
-    Given an array of strings strs, group the anagrams together. You can return the answer in any order.
-    An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
+    Given an array of strings strs, group the anagrams together. 
+    You can return the answer in any order. An Anagram is a word 
+    or phrase formed by rearranging the letters of a different word 
+    or phrase, typically using all the original letters exactly once.
 
     Example 1:
     Input: strs = ["eat","tea","tan","ate","nat","bat"]
@@ -79,8 +81,10 @@ Q242. Valid Anagram
 
 .. code-block:: text
 
-    Given two strings s and t, return true if t is an anagram of s, and false otherwise.
-    An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
+    Given two strings s and t, return true if t is an anagram of 
+    s, and false otherwise. An Anagram is a word or phrase formed 
+    by rearranging the letters of a different word or phrase, 
+    typically using all the original letters exactly once.
 
     Example 1:
     Input: s = "anagram", t = "nagaram"
@@ -94,7 +98,8 @@ Q242. Valid Anagram
     1 <= s.length, t.length <= 5 * 104
     s and t consist of lowercase English letters.
 
-    Follow up: What if the inputs contain Unicode characters? How would you adapt your solution to such a case?
+    Follow up: What if the inputs contain Unicode characters? 
+    How would you adapt your solution to such a case?
 
 .. q238:
 
@@ -103,9 +108,11 @@ Q238. Product of Array Except Self
 
 .. code-block:: text
 
-    Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i].
-    The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.
-    You must write an algorithm that runs in O(n) time and without using the division operation.
+    Given an integer array nums, return an array answer such that 
+    answer[i] is equal to the product of all the elements of nums 
+    except nums[i]. The product of any prefix or suffix of nums is 
+    guaranteed to fit in a 32-bit integer. You must write an algorithm 
+    that runs in O(n) time and without using the division operation.
 
     Example 1:
     Input: nums = [1,2,3,4]
@@ -118,9 +125,13 @@ Q238. Product of Array Except Self
     Constraints:
     2 <= nums.length <= 10^5
     -30 <= nums[i] <= 30
-    The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.
+
+    The product of any prefix or suffix of nums is guaranteed to fit in 
+    a 32-bit integer.
  
-    Follow up: Can you solve the problem in O(1) extra space complexity? (The output array does not count as extra space for space complexity analysis.)
+    Follow up: Can you solve the problem in O(1) extra space complexity? 
+    (The output array does not count as extra space for space complexity 
+    analysis.)
 
 
 
@@ -174,7 +185,10 @@ prefix and suffix
 Solutions
 ------------
 
+
 .. _q49sol:
+Q49. Group Anagrams
+~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: python
 
@@ -186,7 +200,10 @@ Solutions
                 indexed_anagram[index] = indexed_anagram.get(index,[]) + [str_item]
             return list(indexed_anagram.values())
 
+
 .. _q242sol:
+Q242. Valid Anagram
+~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: python
 
@@ -199,7 +216,10 @@ Solutions
                 char_counts[int(ord(current_char)-ord('a'))] -= 1
             return char_counts == [0]*26
 
+
 .. _q238sol:
+Q238. Product of Array Except Self
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: python
 
