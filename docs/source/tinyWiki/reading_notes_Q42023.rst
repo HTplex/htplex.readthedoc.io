@@ -1,4 +1,4 @@
-Paper Reading Notes, Fall 2023
+Paper Reading Notes, Q4 2023
 ===============================
 
 llama 2
@@ -352,6 +352,8 @@ Heat travels through a thermal conductor.
 
 ``World Knowledge``
 
+https://aclanthology.org/Q19-1026.pdf
+
 ``Reading Comprehension``
 
 ``Math``
@@ -363,9 +365,225 @@ Heat travels through a thermal conductor.
 
 
 
-llama 1
+LLaVA
 --------
 
+`<https://arxiv.org/pdf/2304.08485.pdf>`
+
+LLaVA is one of the first instruction-tuned vl models. Which aims to be good at multimodal-QA,
+
+Achievements
+^^^^^^^^^^^^
+SoTA on Science QA multimodal reasoning dataset.
 
 
+Modeling
+^^^^^^^^^
+CLIP + LLaMA, Image feature is extracted from CLIP, went through linear layer to get the same dimension as text feature, 
+then concat them together at sequence level and went through LLaMA.
+
+Data 
+^^^^^
+Relevant dataset:
+1.  ``CC``
+2.  ``COCO``
+3.  ``LAION``
+
+Dataset Contribution:
+
+This paper proposed a valueable Image-text instruction-following dataset. (115K)
+The dataset is mainly created by enriching popular image captioning dataset.
+
+For popular dataset, it mainly contains: ``img``, ``caption``, ``detction`` 3 parts.
+
+The short and easy path would be creating a bunch of ways to ask for caption and detection, results, 
+which would lacks diversity and in-depth reasoning.
+
+The way that this paper proposed is much smarter, it tries to use strong text-based LLMs as a good teacher, using
+``caption`` and  ``detection`` as representation of image input, and generate those 3 types of enriched instructions
+labels from strong text LLMs.
+
+There's 3 types of instructions for for this dataset: ``Conversation`` ``Detailed Description`` and ``Complex reasoning``
+
+``Conversation``
+
+A conversation between the assistant and a person asking questions about this photo. 
+Anything with a determined answer is a valid question. 
+
+Example:
+
+.. code-block:: text
+
+    Question: What type of vehicle is featured in the image?
+    Answer: The image features a black sport utility vehicle (SUV).
+    Question: Where is the vehicle parked?
+    Answer: The vehicle is parked in an underground parking area, likely in a public garage.
+    Question: What are the people in the image doing?
+    Answer: The people are trying to fit all of their luggage into the SUV, likely preparing for a trip.
+
+This is prompted to GPT using:
+
+.. code-block:: python
+
+    messages = [ {"role":"system",
+                  "content": f"""
+                        You are an AI visual assistant, and you are seeing a single image.
+                        What you see are provided with five sentences, describing the same image you
+                        are looking at. Answer all questions as you are seeing the image.
+                         
+                        Design a conversation between you and a person asking about this photo. 
+                        The answers should be in a tone that a visual AI assistant is seeing the image 
+                        and answering the question. Ask diverse questions and give corresponding answers.
+                         
+                        Include questions asking about the visual content of the image, 
+                        including the object types, counting the objects, object actions, object locations, 
+                        relative positions between objects, etc. Only include questions that have definite answers:
+                            (1) one can see the content in the image that the question asks about and can answer confidently; 
+                            (2) one can determine confidently from the image that it is not in the image. 
+                            Do not ask any question that cannot be answered confidently.
+
+                        Also include complex questions that are relevant to the content in the image, 
+                        for example, asking about background knowledge of the objects in the image, 
+                        asking to discuss about events happening in the image, etc. 
+
+                        Again, do not ask about uncertain details. 
+                        Provide detailed answers when answering complex questions. 
+                        For example, give detailed examples or reasoning steps to make 
+                        the content more convincing and well-organized. 
+                        You can include multiple paragraphs if necessary."""}
+                    ]
+    for sample in fewshot_samples:
+        messages.append({"role":"user", "content":sample['context']}) 
+        messages.append({"role":"assistant", "content":sample['response']} )
+        messages.append({"role":"user", "content":'\n'.join(query)})
+
+
+
+``Detailed Description``
+
+Example:
+.. code-block:: text
+
+    The image is an underground parking area with a black sport utility vehicle (SUV) parked. 
+    There are three people in the scene, with one person standing closer to the left side of the vehicle, 
+    another person in the middle, and the third person on the right side. They are all working together to 
+    pack their luggage into the SUV for a trip.
+    In the parking area, various luggage items are scattered around the vehicle. 
+    There are two backpacks, one located near the left rear wheel and the other 
+    closer to the right side of the vehicle. Additionally, there are two suitcases, 
+    one on the right side of the car and another further away near the center of the 
+    parking area. A bicycle can also be seen on the left side of the vehicle.
+    Other cars are parked around the main SUV, with one car positioned behind it and 
+    slightly to the left, another behind and slightly to the right, and the third car 
+    further behind on the right side.
+
+This is prompted to GPT using:
+
+.. code-block:: text
+
+    "Describe the following image in detail"
+    "Provide a detailed description of the given image"
+    "Give an elaborate explanation of the image you see"
+    ...
+
+``Complex reasoning``
+
+The answers typically require a step-by-step reasoning process by following rigorous logic.
+
+Example:
+
+.. code-block:: text
+
+    Question: What challenges do these people face?
+    Answer: In the image, a group of people is standing outside a black SUV in a parking area, 
+    surrounded by various pieces of luggage, including suitcases and backpacks. They are facing 
+    the challenge of fitting all their luggage into the black SUV. There are multiple suitcases 
+    and backpacks to be packed, which suggests that the group has a significant amount of belongings 
+    to accommodate. They might have to strategize and arrange the luggage efficiently to ensure that 
+    everything fits properly into the vehicle. Additionally, they need to consider the comfort 
+    of the passengers and visibility while driving, so the placement of the luggage must not
+    obstruct the driver’s view or make the passengers uncomfortable during the trip.
+
+
+Training
+^^^^^^^^^
+Training data format
+~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: 
+
+    [system-message] <STOP> \n
+    Human : [instuct_1] <STOP> \n
+    Assistant: [answer_1] <STOP> \n
+    Human : [instruct_2] <STOP> \n
+    Assistant: [anwser_2] <STOP> \n 
+    ...
+
+instruct_1 always include encoded image in the sentence, 
+either beginning or end. and it will always be in any training data. So image is always conditioned
+
+TODO: dig deeper on how probablity is calculated here
+
+
+Pre-Training for VL alignment
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1. Selected 595K from CC3M dataset
+2. naive expansion by random choose a variance of "please summerise this image" and use CC3M label as answer
+3. Both CLIP and LLaMA is frozen, only train the projection matrix, so the encoded image is aligned with LLaMA embedding.
+4. This stage can be understood as training a compatible visual tokenizer for the frozen LLM. without training encoder.
+
+End2End Fine Tuning
+~~~~~~~~~~~~~~~~~~~~
+
+1. CLIP is still frozen, only train LLaMA and projection layer.
+2. DATA: 158K image-text pairs enriched by GPT-4,
+
+Task specific Fine Tuning
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1. DATA: ScienceQA benchmark. 21K multiple choice Questions
+2. used the visual features before the last layer, trained for 12 epochs? 
+3. TODO:  Detail needed
+4. LLaVA = 90.92%, GPT-4 = 82% due to lack to img feature
+5. LLaVA + GPT, use LLaVA to replace GPT failed question = 90%
+6. using GPT-4 to combine LLaVA and GPT-4 output = 92.53% (SoTA)
+
+
+Evaluation
+^^^^^^^^^^
+Using GPT-4 to compare GPT-4 generated answer from text discription and LLaVA E2E output from image only,
+Let GPT-4 to give a 1-10 score, and compare the score between 2 outputs. relative score is LLaVA/GPT-4.
+
+.. image:: "./imgs/llavascore1.png"
+    :width: 500px
+    :align: center
+
+The model also shows good infer ability from hard-to-discribe parts of the image. 
+Outperforms pure text-based model. For example, catching motion blur to infer the car is moving.
+
+Ablations
+^^^^^^^^^^
+1. last layer of clip vs second last layer of clip: last layer yields 89.96% and is
+0.96% lower than the feature before the last year.
+We hypothesize that this is because CLIP’s last
+year features may focus more on global image
+properties compared to the layer before it, which
+can focus more on localized properties that can
+be more useful for understanding specific image
+details.
+2. Chain of Thought: while reasoning-first can quickly reach 89.77% accuracy in 6 epochs, answer-first can 
+also achieve the best number in 12 ecophes, futher training has no improvements.
+3. skip alignment step drop acc by 5%, to 85%
+4. 7B model size drops acc by 1%, to 89.8%
+
+Future IDEAs
+^^^^^^^^^^^^^
+1. More data, OCR, GLIP GLGEN etc.
+2. More Vision Models, such as SAM.
+
+
+
+
+BeiT 
+--------
 
