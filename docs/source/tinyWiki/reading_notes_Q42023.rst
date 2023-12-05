@@ -585,7 +585,9 @@ Future IDEAs
 1. More data, OCR, GLIP GLGEN etc.
 2. More Vision Models, such as SAM.
 
+------------------------------------------------------------------------------------------------------------------------
 
+LLaVA V1.5
 
 
 
@@ -593,6 +595,9 @@ Future IDEAs
 
 BeiT 3
 --------
+
+`<https://arxiv.org/pdf/2106.08254.pdf>`
+skipping 1 and 2, will only briefly cover it here
 
 
 
