@@ -362,6 +362,7 @@ https://aclanthology.org/Q19-1026.pdf
 
 
 
+------------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -372,9 +373,16 @@ LLaVA
 
 LLaVA is one of the first instruction-tuned vl models. Which aims to be good at multimodal-QA,
 
-Achievements
-^^^^^^^^^^^^
-SoTA on Science QA multimodal reasoning dataset.
+Contributions
+^^^^^^^^^^^^^^
+1. A new multimodal QA dataset, LLaVA, which is a multimodal QA dataset with 115K image-text pairs.
+2. A new VL data generation method, using image discription + strong text LLM to generate image instruction labels.
+3. A well-tested new base model, LLaVA (CLIP+LLaMA) which proved to be very powerful.
+4. A standard training pipline for VL models, alignment (~500k), E2E (~150k), task specific fine tuning (~20k)
+5. A new metric, LLaVA score, which is a relative score between LLaVA and GPT-4, to measure the model's ability to 
+   generate text from image.
+6. Survey of popular datasets for VL: ``CC3M`` ``COCO`` ``LAION``
+7. Ablation studys on model behavior.
 
 
 Modeling
@@ -384,12 +392,6 @@ then concat them together at sequence level and went through LLaMA.
 
 Data 
 ^^^^^
-Relevant dataset:
-1.  ``CC``
-2.  ``COCO``
-3.  ``LAION``
-
-Dataset Contribution:
 
 This paper proposed a valueable Image-text instruction-following dataset. (115K)
 The dataset is mainly created by enriching popular image captioning dataset.
@@ -405,7 +407,8 @@ labels from strong text LLMs.
 
 There's 3 types of instructions for for this dataset: ``Conversation`` ``Detailed Description`` and ``Complex reasoning``
 
-``Conversation``
+Conversation
+~~~~~~~~~~~~~
 
 A conversation between the assistant and a person asking questions about this photo. 
 Anything with a determined answer is a valid question. 
@@ -459,7 +462,8 @@ This is prompted to GPT using:
 
 
 
-``Detailed Description``
+Detailed Description
+~~~~~~~~~~~~~~~~~~~~~~
 
 Example:
 .. code-block:: text
@@ -486,7 +490,8 @@ This is prompted to GPT using:
     "Give an elaborate explanation of the image you see"
     ...
 
-``Complex reasoning``
+Complex reasoning
+~~~~~~~~~~~~~~~~~~
 
 The answers typically require a step-by-step reasoning process by following rigorous logic.
 
@@ -507,6 +512,7 @@ Example:
 
 Training
 ^^^^^^^^^
+
 Training data format
 ~~~~~~~~~~~~~~~~~~~~
 
@@ -554,9 +560,7 @@ Evaluation
 Using GPT-4 to compare GPT-4 generated answer from text discription and LLaVA E2E output from image only,
 Let GPT-4 to give a 1-10 score, and compare the score between 2 outputs. relative score is LLaVA/GPT-4.
 
-.. image:: "./imgs/llavascore1.png"
-    :width: 500px
-    :align: center
+This model gives a relative score of 0.83 on conversation, 0.75 on detail discription, 0.91 on complex reasoning.
 
 The model also shows good infer ability from hard-to-discribe parts of the image. 
 Outperforms pure text-based model. For example, catching motion blur to infer the car is moving.
@@ -584,6 +588,11 @@ Future IDEAs
 
 
 
-BeiT 
+
+------------------------------------------------------------------------------------------------------------------------
+
+BeiT 3
 --------
+
+
 
